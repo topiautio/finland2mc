@@ -1,0 +1,33 @@
+[project]
+name = "finland2mc"
+version = "0.1.0"
+description = "Turn any place in Finland into a 1:1 Minecraft Java Edition world from National Land Survey open data"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Topi Autio" }]
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "numpy",
+    "scipy",
+    "pyproj",
+    "rasterio",
+    "pyogrio",
+    "shapely>=2",
+    "nbtlib",
+    "pillow",
+    "laspy[lazrs]",
+]
+
+[project.urls]
+Homepage = "https://github.com/topiautio/finland2mc"
+
+[dependency-groups]
+dev = ["pytest"]
+
+[project.scripts]
+finland2mc = "finland2mc.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

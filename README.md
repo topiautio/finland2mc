@@ -6,7 +6,7 @@ lakes and sea, roads, bridges, buildings, fields, and trees placed where laser s
 
 | Jyväskylä | Naantali | Keuruu |
 |---|---|---|
-| ![Jyväskylä](docs/jyvaskyla.jpg) | ![Naantali](docs/naantali.jpg) | ![Keuruu](docs/keuruu.jpg) |
+| ![Jyväskylä](https://raw.githubusercontent.com/topiautio/finland2mc/main/docs/jyvaskyla.jpg) | ![Naantali](https://raw.githubusercontent.com/topiautio/finland2mc/main/docs/naantali.jpg) | ![Keuruu](https://raw.githubusercontent.com/topiautio/finland2mc/main/docs/keuruu.jpg) |
 
 *Top-down maps drawn from the generated world files.*
 
@@ -15,13 +15,12 @@ lakes and sea, roads, bridges, buildings, fields, and trees placed where laser s
 You need [uv](https://docs.astral.sh/uv/) and Minecraft Java Edition 26.3 or newer.
 
 ```bash
-git clone https://github.com/topiautio/finland2mc
-cd finland2mc
-uv run finland2mc "Jyväskylä"
+uvx finland2mc "Jyväskylä"
 ```
 
-uv installs the Python packages on the first run. To get a plain `finland2mc` command that works from any
-folder, run `uv tool install .` in the project folder.
+uvx downloads finland2mc and the Python packages it needs on the first run. After that it keeps using the
+version it downloaded; `uvx finland2mc@latest` gets the newest one. To get a plain `finland2mc` command, run
+`uv tool install finland2mc`.
 
 Run like that, it asks a few questions, each with a default you can accept with Enter:
 
@@ -35,9 +34,9 @@ Then it prints the download size and a time estimate, and asks before starting.
 To skip the questions, give the answers as options:
 
 ```bash
-uv run finland2mc "Porvoo" --size 2 --yes                # defaults, no questions
-uv run finland2mc "Kallio, Helsinki" --size 3 --prism    # also install into Prism Launcher
-uv run finland2mc --at 61.4981,23.7608 --name "Tampere centre"
+uvx finland2mc "Porvoo" --size 2 --yes                # defaults, no questions
+uvx finland2mc "Kallio, Helsinki" --size 3 --prism    # also install into Prism Launcher
+uvx finland2mc --at 61.4981,23.7608 --name "Tampere centre"
 ```
 
 The finished world goes to `worlds/<name> 1-1/`, with a top-down map next to it (`<name> 1-1.png`).
@@ -125,7 +124,8 @@ The world is written directly in the 26.3 format. Newer Minecraft versions upgra
 `data/blocks_26.3.json` and `data/template/` were produced by the official 26.3 server: its data generator's
 block report (trimmed to names, properties and default states), and an empty world it saved.
 
-Run the tests with `uv run pytest`.
+To work on the code, clone the repository and use `uv run finland2mc` in it. Run the tests with
+`uv run pytest`.
 
 ## Limits
 
